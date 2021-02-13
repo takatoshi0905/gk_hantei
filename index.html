@@ -19,25 +19,21 @@
         e.preventDefault();
         // 入力値の取得
         const inp_number = document.getElementById('inp_number');
-        // let number;
-        // let create_img;
-        // let img_2;
-        let add_img;
 
         // 追加される画像タグと段落のオブジェクトを取得
-        const img_area = document.getElementById("image");  //articleのid
+        const img_area = document.getElementById("image"); 
         const p_text = document.getElementById('p_hantei'); 
 
         // 追加された段落のリセット
         p_text.textContent = "";
+
         // 前回追加したimgタグを削除
-        add_img = document.getElementById('add_img'); //前回追加されたimgのid
+        let add_img = document.getElementById('add_img');
         if(add_img != null){
             img_area.removeChild(add_img);
          }
 
         // imgタグを設定
-        // create_img = document.createElement('img');
         add_img = document.createElement('img');
 
         // 入力値が空白でないとき、処理を実行する
@@ -45,22 +41,19 @@
             // 入力値を数値に変換
             const number = Number(inp_number.value);
             if(number % 2 === 0){
-                // create_img.src = 'goo.jpg';
                 add_img.src = 'goo.jpg';
                 p_text.textContent = `${number}はグー数です！`;
             } else{
-                // create_img.src = 'kiss.jpg';
                 add_img.src = 'kiss.jpg';
                 p_text.textContent = `${number}はグー数ではありません！(奇数)`;
             }
-            // create_img.id = 'add_img';
-            // create_img.height = 150;
-            // create_img.width = 150;
+
+            // 追加する画像の設定
             add_img.id = 'add_img';
             add_img.height = 150;
             add_img.width = 150;
+
             // imgタグをarticle内に追加する
-            // img_area.appendChild(create_img);
             img_area.appendChild(add_img);
         }
     });
