@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+    <title>グー数判定</title>
+</head>
+<body>
+    <h1>グー数判定</h1>
+    <p>入力値がグー数(偶数)かを判定します</p>
+    <form>
+        <input type="number" min="0" id="inp_number">
+        <button>判定</button>
+    </form>
+    <p id="p_hantei"></p>
+    <article id="image"></article>
+    <script>
+        document.querySelector('form').addEventListener('submit',e =>{
+        e.preventDefault();
+        // 入力値の取得
+        const inp_number = document.getElementById('inp_number');
+        let number;
+        let create_img;
+        let img_2;
+        // 画像タグの追加
+        const img_area = document.getElementById("image");
+        const p_text = document.getElementById('p_hantei');
+
+        // p要素のリセット
+        p_text.textContent = "";
+        // 追加したimgタグのリセット
+        if(document.getElementById('add_img') != null){
+            document.getElementById('add_img').remove()
+         }
+        create_img = document.createElement('img');
+
+        // 入力値が空白でないとき、処理を実行する
+        if (inp_number.value !== '' ){
+            // 入力値を数値に変換
+            number = Number(inp_number.value);
+            if(number % 2 === 0){
+                create_img.src = 'goo.jpg';
+                p_text.textContent = `${number}はグー数です！`;
+            } else{
+                create_img.src = 'kiss.jpg';
+                p_text.textContent = `${number}はグー数ではありません！(奇数)`;
+            }
+            create_img.id = 'add_img';
+            create_img.height = 150;
+            create_img.width = 150;
+            img_area.appendChild(create_img);
+        }
+    });
+    </script>
+</body>
+</html>
